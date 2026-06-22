@@ -56,10 +56,20 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-bg-secondary border-t border-bg-tertiary relative overflow-hidden">
+    <footer className="bg-bg-secondary border-t border-white/5 relative overflow-hidden">
       {/* Subtle bottom glows */}
       <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-brand/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* Geometric background pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, rgba(232,118,43,0.3) 1px, transparent 1px),
+                            radial-gradient(circle at 75% 75%, rgba(139,36,56,0.3) 1px, transparent 1px)`,
+          backgroundSize: "40px 40px",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -69,9 +79,9 @@ export default function Footer() {
               <img 
                 src="/images/logo-full.png" 
                 alt="البيت التركي للمشويات" 
-                className="w-10 h-10 rounded-sm object-contain group-hover:rotate-12 transition-transform duration-300" 
+                className="w-10 h-10 rounded-xl object-contain group-hover:rotate-12 transition-transform duration-300 shadow-md border border-white/5" 
               />
-              <span className="text-lg font-bold text-text-primary group-hover:text-accent transition-colors duration-300">
+              <span className="text-lg font-black text-text-primary group-hover:text-accent transition-colors duration-300">
                 البيت التركي للمشويات
               </span>
             </Link>
@@ -84,9 +94,9 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-sm border border-bg-tertiary flex items-center justify-center text-text-secondary social-icon-hover bg-bg-primary/20"
+                  className="w-10 h-10 rounded-xl border border-white/5 flex items-center justify-center text-text-secondary social-icon-hover bg-bg-primary/20 backdrop-blur-sm"
                 >
-                  <Icon size={16} />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>
@@ -137,7 +147,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar Divider */}
-        <div className="footer-divider w-full h-[1px] bg-bg-tertiary mt-12" />
+        <div className="footer-divider w-full h-[1px] bg-white/5 mt-12" />
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Search, Navigation, MapPin, ShoppingBag, ChevronLeft, Flame, Star, X, Minus, Plus } from "lucide-react";
+import { Search, Navigation, MapPin, ShoppingBag, ChevronLeft, Flame, Star, X, Minus, Plus, Clock, Trash2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { gsap } from "gsap";
 import CategoryTabs from "@/components/customer/CategoryTabs";
@@ -28,6 +28,62 @@ export default function MenuContent({ mode, tableId }: MenuContentProps) {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const [previewItem, setPreviewItem] = useState<MenuItemType | null>(null);
+
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Load recent searches from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("recent_menu_searches");
+    if (saved) {
+      try {
+        setRecentSearches(JSON.parse(saved));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
+
+  const saveSearchTerm = (term: string) => {
+    if (!term.trim()) return;
+    const cleanTerm = term.trim();
+    setRecentSearches((prev) => {
+      const filtered = prev.filter((t) => t !== cleanTerm);
+      const updated = [cleanTerm, ...filtered].slice(0, 5); // Keep last 5
+      localStorage.setItem("recent_menu_searches", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const handleSearchSubmit = (term: string) => {
+    setSearchQuery(term);
+    saveSearchTerm(term);
+    setIsSearchFocused(false);
+    inputRef.current?.blur();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearchSubmit(searchQuery);
+    }
+  };
+
+  const deleteRecentSearch = (term: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setRecentSearches((prev) => {
+      const updated = prev.filter((t) => t !== term);
+      localStorage.setItem("recent_menu_searches", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const clearAllRecents = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setRecentSearches([]);
+    localStorage.removeItem("recent_menu_searches");
+  };
+
+  const trendingSearches = ["مشاوي مشكل", "كباب لحم", "ورق عنب", "حمص", "بيتزا سلامي"];
 
   const getTotalItems = useCartStore((state) => state.getTotalItems);
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
@@ -214,23 +270,98 @@ export default function MenuContent({ mode, tableId }: MenuContentProps) {
                 : "0 0 0 0 transparent",
             }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="relative rounded-xl overflow-hidden"
+            className="relative rounded-xl z-50"
           >
             <Search
               size={18}
-              className={`absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
+              className={`absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors duration-300 z-10 ${
                 isSearchFocused ? "text-accent" : "text-text-secondary"
               }`}
             />
             <input
+              ref={inputRef}
               type="text"
               placeholder="ابحث عن أطباقك المفضلة..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
-              className="w-full bg-bg-primary/80 border border-bg-tertiary rounded-xl py-3 pr-11 pl-4 text-sm text-text-primary focus:outline-none focus:border-accent/50 transition-all duration-300 placeholder:text-text-secondary/60"
+              onKeyDown={handleKeyDown}
+              className="w-full bg-bg-primary/80 border border-bg-tertiary rounded-xl py-3 pr-11 pl-4 text-sm text-text-primary focus:outline-none focus:border-accent/50 transition-all duration-300 placeholder:text-text-secondary/60 relative z-10"
             />
+
+            {/* Smart Search Dropdown */}
+            <AnimatePresence>
+              {isSearchFocused && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                  onMouseDown={(e) => e.preventDefault()} // Keeps the input focused when clicking items
+                  className="absolute left-0 right-0 top-full mt-2 p-4 bg-bg-secondary border border-bg-tertiary rounded-2xl shadow-2xl flex flex-col gap-4 z-40 select-none text-right"
+                  style={{ direction: "rtl" }}
+                >
+                  {/* Trending Searches */}
+                  <div>
+                    <h3 className="text-xs font-bold text-text-secondary mb-2 flex items-center gap-1.5 justify-start">
+                      <Flame size={12} className="text-accent fill-current animate-pulse" />
+                      <span>الأكثر بحثاً اليوم</span>
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 justify-start">
+                      {trendingSearches.map((term) => (
+                        <button
+                          key={term}
+                          onClick={() => handleSearchSubmit(term)}
+                          className="px-2.5 py-1.5 rounded-xl bg-bg-primary hover:bg-bg-tertiary border border-bg-tertiary/60 text-[11px] text-text-primary transition-all duration-200 active:scale-95 hover:border-accent/30"
+                        >
+                          {term}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Recent Searches */}
+                  {recentSearches.length > 0 && (
+                    <div className="border-t border-bg-tertiary/50 pt-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="text-xs font-bold text-text-secondary flex items-center gap-1.5">
+                          <Clock size={12} className="text-text-secondary" />
+                          <span>عمليات البحث الأخيرة</span>
+                        </h3>
+                        <button
+                          onClick={clearAllRecents}
+                          className="text-[10px] text-accent hover:underline"
+                        >
+                          مسح الكل
+                        </button>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        {recentSearches.map((term) => (
+                          <div
+                            key={term}
+                            onClick={() => handleSearchSubmit(term)}
+                            className="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-bg-primary transition-colors cursor-pointer group"
+                          >
+                            <div className="flex items-center gap-2">
+                              <Clock size={11} className="text-text-secondary group-hover:text-accent transition-colors" />
+                              <span className="text-xs text-text-primary group-hover:text-accent transition-colors">{term}</span>
+                            </div>
+                            <button
+                              onClick={(e) => deleteRecentSearch(term, e)}
+                              className="text-text-secondary hover:text-danger p-1 rounded-md transition-colors"
+                              title="حذف من السجل"
+                            >
+                              <Trash2 size={11} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </motion.header>

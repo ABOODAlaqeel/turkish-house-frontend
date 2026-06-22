@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronDown, ShoppingBag, Star, Flame, Utensils } from "lucide-react";
+import { ChevronDown, ShoppingBag, Star, Flame, Utensils, ChefHat, Heart, Award } from "lucide-react";
 import EmberCanvas from "@/components/shared/EmberCanvas";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -66,8 +66,8 @@ export default function HeroSection() {
 
   const heroImages = [
     "/images/hero_bg_1.png",
-    "/images/hero_bg_2.png",
-    "/images/hero_bg_3.png",
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600",
+    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1600",
   ];
 
   // Image slideshow
@@ -294,92 +294,136 @@ export default function HeroSection() {
       />
 
       {/* === Content === */}
-      <div className="hero-content relative max-w-4xl mx-auto px-4 sm:px-6 text-center" style={{ zIndex: 25 }}>
-        {/* Premium Badge */}
-        <div className="hero-badge inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-accent/30 bg-accent/[0.08] backdrop-blur-md mb-8 animate-badge-pulse">
-          <Star size={14} className="text-accent fill-accent" />
-          <span className="text-accent text-sm font-semibold tracking-wide">
-            تجربة طعام لا تُنسى
-          </span>
-          <Star size={14} className="text-accent fill-accent" />
-        </div>
-
-        {/* Title */}
-        <h1 className="mb-6">
-          <span className="hero-title-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-text-primary leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-            البيت التركي
-          </span>
-          <span className="hero-title-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
-            <span
-              className="text-gold-gradient animate-gradient-flow"
-              style={{ backgroundSize: "200% 200%" }}
-            >
-              للمشويات
-            </span>
-          </span>
-        </h1>
-
-        {/* Divider */}
-        <div className="flex items-center justify-center gap-4 mb-5">
-          <div className="hero-divider-line h-px w-20 bg-gradient-to-r from-transparent to-accent/60" />
-          <div className="hero-divider-text flex items-center gap-2">
-            <Flame size={18} className="text-accent/80" />
-            <span className="text-accent/80 text-lg font-light tracking-[0.2em]">
-              مشويات فاخرة
-            </span>
-            <Flame size={18} className="text-accent/80" />
-          </div>
-          <div className="hero-divider-line h-px w-20 bg-gradient-to-l from-transparent to-accent/60" />
-        </div>
-
-        {/* Subtitle */}
-        <p className="hero-subtitle text-text-secondary text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
-          أشهى المشويات التركية الأصيلة، محضّرة بأجود المكونات وعلى يد أمهر
-          الطهاة. اطلب طعامك بسهولة من طاولتك.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-          <Link
-            href="/menu"
-            className="hero-cta-btn btn-gold btn-shimmer text-base px-10 py-4 gap-3 font-bold z-10 rounded-xl shadow-lg shadow-brand/30"
-          >
-            <ShoppingBag size={20} className="relative z-10" />
-            <span className="relative z-10">اعرض المنيو الآن</span>
-          </Link>
-          <button
-            onClick={scrollToMenu}
-            className="hero-cta-btn btn-ghost text-base px-10 py-4 gap-3 rounded-xl group backdrop-blur-sm"
-          >
-            <Utensils
-              size={20}
-              className="group-hover:rotate-12 transition-transform duration-300"
-            />
-            <span>اعرف أكثر</span>
-          </button>
-        </div>
-
-        {/* Stats */}
-        <div className="flex items-center justify-center gap-8 sm:gap-14">
-          {[
-            { value: "+٥٠", label: "طبق أصيل", icon: "🍖" },
-            { value: "+١٠٠٠", label: "زبون سعيد", icon: "⭐" },
-            { value: "١٠", label: "سنوات خبرة", icon: "🏆" },
-          ].map((stat) => (
-            <div key={stat.label} className="hero-stat text-center group">
-              <div className="text-lg mb-1">{stat.icon}</div>
-              <div className="text-2xl sm:text-3xl font-black text-accent group-hover:scale-110 transition-transform duration-300">
-                {countersVisible ? (
-                  <AnimatedCounter target={stat.value} />
-                ) : (
-                  <span className="opacity-0">{stat.value}</span>
-                )}
-              </div>
-              <div className="text-text-secondary text-xs sm:text-sm mt-1 font-medium">
-                {stat.label}
-              </div>
+      <div className="hero-content relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-12 lg:pt-32 lg:pb-16" style={{ zIndex: 25 }}>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Right Column: Texts & Actions (RTL layout) */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right">
+            {/* Premium Badge */}
+            <div className="hero-badge inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-accent/30 bg-accent/[0.08] backdrop-blur-md mb-8 animate-badge-pulse">
+              <Star size={14} className="text-accent fill-accent" />
+              <span className="text-accent text-sm font-semibold tracking-wide">
+                تجربة طعام لا تُنسى
+              </span>
+              <Star size={14} className="text-accent fill-accent" />
             </div>
-          ))}
+
+            {/* Title */}
+            <h1 className="mb-6 text-center lg:text-right">
+              <span className="hero-title-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-text-primary leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                البيت التركي
+              </span>
+              <span className="hero-title-line block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
+                <span
+                  className="text-gold-gradient animate-gradient-flow"
+                  style={{ backgroundSize: "200% 200%" }}
+                >
+                  للمشويات
+                </span>
+              </span>
+            </h1>
+
+            {/* Divider */}
+            <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 w-full">
+              <div className="hero-divider-line h-px w-20 bg-gradient-to-r from-transparent to-accent/60" />
+              <div className="hero-divider-text flex items-center gap-2">
+                <Flame size={18} className="text-accent/80" />
+                <span className="text-accent/80 text-lg font-light tracking-[0.2em]">
+                  مشويات فاخرة
+                </span>
+                <Flame size={18} className="text-accent/80" />
+              </div>
+              <div className="hero-divider-line h-px w-20 bg-gradient-to-l from-transparent to-accent/60" />
+            </div>
+
+            {/* Subtitle */}
+            <p className="hero-subtitle text-text-secondary text-base sm:text-lg md:text-xl leading-relaxed max-w-xl mb-10">
+              أشهى المشويات التركية الأصيلة، محضّرة بأجود المكونات وعلى يد أمهر
+              الطهاة. اطلب طعامك بسهولة من طاولتك.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full mb-10 lg:mb-0">
+              <Link
+                href="/menu"
+                className="hero-cta-btn btn-gold btn-shimmer text-base px-10 py-4 gap-3 font-bold z-10 rounded-xl shadow-lg shadow-brand/30 border border-brand-light/20"
+              >
+                <ShoppingBag size={20} className="relative z-10" />
+                <span className="relative z-10">اعرض المنيو الآن</span>
+              </Link>
+              <button
+                onClick={scrollToMenu}
+                className="hero-cta-btn btn-ghost text-base px-10 py-4 gap-3 rounded-xl group backdrop-blur-sm"
+              >
+                <Utensils
+                  size={20}
+                  className="group-hover:rotate-12 transition-transform duration-300"
+                />
+                <span>اعرف أكثر</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Left Column: Floating 3D Plate with Overlap */}
+          <div className="lg:col-span-5 flex justify-center items-center relative h-[320px] sm:h-[420px] lg:h-[480px] w-full">
+            {/* Ambient Orb behind plate */}
+            <div className="absolute w-[260px] h-[260px] sm:w-[350px] sm:h-[350px] bg-brand/20 rounded-full blur-[80px] pointer-events-none" />
+            
+            {/* Decorative rotating gold and burgundy rings */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] border border-accent/15 rounded-full animate-spin-slow opacity-50" />
+              <div className="w-[300px] h-[300px] sm:w-[410px] sm:h-[410px] border border-brand/10 rounded-full animate-spin-slow opacity-30" style={{ animationDirection: "reverse", animationDuration: "35s" }} />
+            </div>
+            
+            {/* Floating Grill Plate Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1.4, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, rotate: 1.5 }}
+              className="relative z-10 w-[270px] h-[270px] sm:w-[370px] sm:h-[370px] lg:w-[410px] lg:h-[410px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)] filter select-none pointer-events-auto"
+            >
+              <img
+                src="/images/turkish_mixed_grill.png"
+                alt="مشويات البيت التركي الفاخرة"
+                className="w-full h-full object-contain animate-float"
+                style={{ animationDuration: "6s" }}
+              />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Stats Glassmorphic Card (Floating full width at bottom) */}
+        <div className="hero-stat-card mt-16 max-w-5xl mx-auto backdrop-blur-md bg-bg-secondary/40 border border-white/5 shadow-2xl rounded-2xl p-6 sm:p-8 relative overflow-hidden group">
+          {/* Inner decorative light */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-brand/5 via-transparent to-accent/5 pointer-events-none" />
+          
+          <div className="grid grid-cols-3 divide-x divide-x-reverse divide-white/5 relative z-10">
+            {[
+              { value: "+٥٠", label: "طبق أصيل", icon: ChefHat },
+              { value: "+١٠٠٠", label: "زبون سعيد", icon: Heart },
+              { value: "١٠", label: "سنوات خبرة", icon: Award },
+            ].map((stat) => {
+              const Icon = stat.icon;
+              return (
+                <div key={stat.label} className="hero-stat text-center group/item px-4">
+                  <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center mx-auto mb-3 text-accent group-hover/item:scale-110 group-hover/item:bg-brand/20 group-hover/item:border-brand/40 transition-all duration-500">
+                    <Icon size={22} className="group-hover/item:rotate-12 transition-transform duration-300" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-accent group-hover/item:scale-105 transition-transform duration-300">
+                    {countersVisible ? (
+                      <AnimatedCounter target={stat.value} />
+                    ) : (
+                      <span className="opacity-0">{stat.value}</span>
+                    )}
+                  </div>
+                  <div className="text-text-secondary text-xs sm:text-sm mt-1.5 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Decorative elements */}

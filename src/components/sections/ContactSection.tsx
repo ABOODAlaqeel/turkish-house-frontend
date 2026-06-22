@@ -113,9 +113,9 @@ export default function ContactSection() {
           <div className="contact-info space-y-6">
             
             {/* Card 1: Map */}
-            <div className="contact-card flex items-start gap-4 p-5 rounded-lg bg-bg-secondary/40 border border-bg-tertiary/40 hover:border-accent/30 transition-all duration-300 hover:bg-bg-secondary hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(139,36,56,0.05)] group">
-              <div className="w-12 h-12 rounded-sm bg-bg-secondary border border-bg-tertiary flex items-center justify-center flex-shrink-0 text-accent group-hover:text-bg-primary group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-                <MapPin size={24} className="group-hover:animate-bounce" />
+            <div className="contact-card flex items-start gap-4 p-5 rounded-2xl bg-bg-secondary/40 backdrop-blur-sm border border-white/5 hover:border-brand/35 transition-all duration-500 hover:bg-bg-secondary/60 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(139,36,56,0.15)] group">
+              <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center flex-shrink-0 text-accent group-hover:text-white group-hover:bg-brand group-hover:border-brand transition-all duration-500">
+                <MapPin size={22} className="group-hover:animate-bounce" />
               </div>
               <div>
                 <h3 className="text-text-primary text-lg font-bold mb-1 group-hover:text-accent transition-colors">موقعنا</h3>
@@ -127,9 +127,9 @@ export default function ContactSection() {
             </div>
 
             {/* Card 2: Hours */}
-            <div className="contact-card flex items-start gap-4 p-5 rounded-lg bg-bg-secondary/40 border border-bg-tertiary/40 hover:border-accent/30 transition-all duration-300 hover:bg-bg-secondary hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(139,36,56,0.05)] group">
-              <div className="w-12 h-12 rounded-sm bg-bg-secondary border border-bg-tertiary flex items-center justify-center flex-shrink-0 text-accent group-hover:text-bg-primary group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-                <Clock size={24} className="group-hover:rotate-12 transition-transform" />
+            <div className="contact-card flex items-start gap-4 p-5 rounded-2xl bg-bg-secondary/40 backdrop-blur-sm border border-white/5 hover:border-brand/35 transition-all duration-500 hover:bg-bg-secondary/60 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(139,36,56,0.15)] group">
+              <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center flex-shrink-0 text-accent group-hover:text-white group-hover:bg-brand group-hover:border-brand transition-all duration-500">
+                <Clock size={22} className="group-hover:rotate-12 transition-transform" />
               </div>
               <div>
                 <h3 className="text-text-primary text-lg font-bold mb-1 group-hover:text-accent transition-colors">ساعات العمل</h3>
@@ -141,9 +141,9 @@ export default function ContactSection() {
             </div>
 
             {/* Card 3: Phone */}
-            <div className="contact-card flex items-start gap-4 p-5 rounded-lg bg-bg-secondary/40 border border-bg-tertiary/40 hover:border-accent/30 transition-all duration-300 hover:bg-bg-secondary hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(139,36,56,0.05)] group">
-              <div className="w-12 h-12 rounded-sm bg-bg-secondary border border-bg-tertiary flex items-center justify-center flex-shrink-0 text-accent group-hover:text-bg-primary group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-                <Phone size={24} className="group-hover:animate-pulse" />
+            <div className="contact-card flex items-start gap-4 p-5 rounded-2xl bg-bg-secondary/40 backdrop-blur-sm border border-white/5 hover:border-brand/35 transition-all duration-500 hover:bg-bg-secondary/60 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(139,36,56,0.15)] group">
+              <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center flex-shrink-0 text-accent group-hover:text-white group-hover:bg-brand group-hover:border-brand transition-all duration-500">
+                <Phone size={22} className="group-hover:animate-pulse" />
               </div>
               <div>
                 <h3 className="text-text-primary text-lg font-bold mb-1 group-hover:text-accent transition-colors">أرقام التواصل</h3>
@@ -155,9 +155,9 @@ export default function ContactSection() {
             </div>
 
             {/* Card 4: Mail */}
-            <div className="contact-card flex items-start gap-4 p-5 rounded-lg bg-bg-secondary/40 border border-bg-tertiary/40 hover:border-accent/30 transition-all duration-300 hover:bg-bg-secondary hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(139,36,56,0.05)] group">
-              <div className="w-12 h-12 rounded-sm bg-bg-secondary border border-bg-tertiary flex items-center justify-center flex-shrink-0 text-accent group-hover:text-bg-primary group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-                <Mail size={24} className="group-hover:-rotate-12 transition-transform" />
+            <div className="contact-card flex items-start gap-4 p-5 rounded-2xl bg-bg-secondary/40 backdrop-blur-sm border border-white/5 hover:border-brand/35 transition-all duration-500 hover:bg-bg-secondary/60 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(139,36,56,0.15)] group">
+              <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center flex-shrink-0 text-accent group-hover:text-white group-hover:bg-brand group-hover:border-brand transition-all duration-500">
+                <Mail size={22} className="group-hover:-rotate-12 transition-transform" />
               </div>
               <div>
                 <h3 className="text-text-primary text-lg font-bold mb-1 group-hover:text-accent transition-colors">البريد الإلكتروني</h3>
@@ -169,16 +169,19 @@ export default function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="contact-form bg-bg-secondary/60 border border-bg-tertiary/60 hover:border-brand/20 transition-all duration-500 rounded-lg p-6 sm:p-8 hover:shadow-[0_20px_50px_rgba(139,36,56,0.08)]">
-            <h3 className="text-xl font-bold text-text-primary mb-6 border-r-4 border-accent pr-3">أرسل لنا رسالة</h3>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+          <div className="contact-form bg-bg-secondary/40 backdrop-blur-md border border-white/5 hover:border-brand/35 transition-all duration-500 rounded-2xl p-6 sm:p-8 hover:shadow-[0_25px_50px_rgba(139,36,56,0.22)] relative overflow-hidden group">
+            {/* Inner background decorative glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand/5 via-transparent to-accent/5 pointer-events-none" />
+            
+            <h3 className="text-xl font-black text-text-primary mb-6 border-r-4 border-accent pr-3 relative z-10">أرسل لنا رسالة</h3>
+            <form className="space-y-5 relative z-10" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm text-text-secondary font-medium block">الاسم الكامل</label>
                   <input 
                     type="text" 
                     id="name" 
-                    className="w-full bg-bg-primary/80 border border-bg-tertiary rounded px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow"
+                    className="w-full bg-bg-primary/65 border border-white/5 rounded-xl px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow"
                     placeholder="أدخل اسمك"
                   />
                 </div>
@@ -187,7 +190,7 @@ export default function ContactSection() {
                   <input 
                     type="tel" 
                     id="phone" 
-                    className="w-full bg-bg-primary/80 border border-bg-tertiary rounded px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow"
+                    className="w-full bg-bg-primary/65 border border-white/5 rounded-xl px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow"
                     placeholder="05x xxx xxxx"
                     dir="ltr"
                   />
@@ -199,7 +202,7 @@ export default function ContactSection() {
                 <input 
                   type="text" 
                   id="subject" 
-                  className="w-full bg-bg-primary/80 border border-bg-tertiary rounded px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow"
+                  className="w-full bg-bg-primary/65 border border-white/5 rounded-xl px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow"
                   placeholder="موضوع الرسالة"
                 />
               </div>
@@ -209,7 +212,7 @@ export default function ContactSection() {
                 <textarea 
                   id="message" 
                   rows={4}
-                  className="w-full bg-bg-primary/80 border border-bg-tertiary rounded px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow resize-none"
+                  className="w-full bg-bg-primary/65 border border-white/5 rounded-xl px-4 py-3 text-text-primary focus:outline-none transition-all duration-300 input-glow resize-none"
                   placeholder="اكتب رسالتك هنا..."
                 ></textarea>
               </div>
@@ -218,7 +221,7 @@ export default function ContactSection() {
               <button 
                 type="submit" 
                 onClick={handleRipple}
-                className="w-full btn-gold py-3.5 justify-center relative overflow-hidden btn-ripple btn-shimmer flex items-center gap-2 rounded text-base font-semibold"
+                className="w-full btn-gold py-3.5 justify-center relative overflow-hidden btn-ripple btn-shimmer flex items-center gap-2 rounded-xl border border-brand-light/20 shadow-lg shadow-brand/25 text-base font-bold transition-all duration-300"
               >
                 {ripples.map((ripple) => (
                   <span 

@@ -42,6 +42,11 @@ export default function MenuCard({ item, index, onPreview }: MenuCardProps) {
 
   // --- 3D Tilt & Mouse Spark Trail Handler ---
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    // Cancel long press if mouse button is down and user drags/moves
+    if (e.buttons === 1) {
+      cancelLongPress();
+    }
+
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -78,6 +83,9 @@ export default function MenuCard({ item, index, onPreview }: MenuCardProps) {
 
   // --- Touch Move Spark Trail Handler ---
   const handleTouchMove = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    // Cancel long press because the user is moving/scrolling on mobile
+    cancelLongPress();
+
     if (!cardRef.current) return;
     const touch = e.touches[0];
     const rect = cardRef.current.getBoundingClientRect();
@@ -120,7 +128,7 @@ export default function MenuCard({ item, index, onPreview }: MenuCardProps) {
     timerRef.current = setTimeout(() => {
       isLongPressedRef.current = true;
       onPreview(item);
-    }, 500);
+    }, 3000); // 3000ms (3 seconds) for long press
   };
 
   const cancelLongPress = () => {

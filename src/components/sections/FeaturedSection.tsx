@@ -144,7 +144,7 @@ export default function FeaturedSection() {
           {featuredDishes.map((dish) => (
             <div 
               key={dish.id} 
-              className="dish-card menu-card group border border-bg-tertiary/60 hover:border-brand/30 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(139,36,56,0.15)]"
+              className="dish-card group bg-bg-secondary/40 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_45px_rgba(139,36,56,0.25)] hover:border-brand/35"
             >
               {/* Image Container */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg-tertiary">
@@ -154,12 +154,12 @@ export default function FeaturedSection() {
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 ease-out"
                 />
                 {/* Default Fade gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-85 group-hover:opacity-40 transition-opacity duration-500 z-10" />
                 {/* Glow warm gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 via-transparent to-accent/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand/25 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                 
                 {/* Category Badge */}
-                <div className="absolute top-3 right-3 z-20 bg-bg-primary/80 backdrop-blur-sm border border-brand/20 text-accent text-xs px-2.5 py-1 rounded-full font-medium transition-all duration-300 group-hover:border-accent/40">
+                <div className="absolute top-3 right-3 z-20 bg-bg-primary/70 backdrop-blur-md border border-white/10 text-accent text-xs px-2.5 py-1 rounded-xl font-semibold transition-all duration-300 group-hover:border-accent/30">
                   {dish.category}
                 </div>
               </div>
@@ -172,7 +172,7 @@ export default function FeaturedSection() {
                       {dish.name}
                     </h3>
                     {/* Animated Price Tag */}
-                    <div className="dish-price shrink-0 bg-brand/10 border border-brand/20 text-accent px-2.5 py-0.5 rounded text-sm font-black flex items-center gap-1 transition-all duration-300">
+                    <div className="dish-price shrink-0 bg-brand/10 border border-brand/20 text-accent px-2.5 py-1 rounded-xl text-sm font-black flex items-center gap-1 transition-all duration-300 group-hover:bg-brand/20 group-hover:border-brand/40">
                       <span>{dish.price}</span>
                       <span className="text-xs text-text-secondary font-normal">ر.ي</span>
                     </div>
@@ -183,7 +183,7 @@ export default function FeaturedSection() {
                 </div>
                 
                 {/* Swap Button Action */}
-                <div className="relative overflow-hidden h-10 mt-4 rounded-sm border border-accent/20 group-hover:border-accent/50 transition-colors duration-300">
+                <div className="relative overflow-hidden h-10 mt-4 rounded-xl border border-accent/20 group-hover:border-accent/40 transition-colors duration-300">
                   {/* Default State: View details */}
                   <div className="absolute inset-0 flex items-center justify-center gap-2 text-accent text-sm font-medium translate-y-0 group-hover:-translate-y-full transition-transform duration-300 ease-out">
                     <span>عرض التفاصيل</span>
@@ -193,7 +193,7 @@ export default function FeaturedSection() {
                   <div className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
                     <Link 
                       href="/menu" 
-                      className="w-full h-full btn-gold py-2 justify-center text-sm items-center gap-2 btn-shimmer"
+                      className="w-full h-full btn-gold py-2 justify-center text-sm items-center gap-2 btn-shimmer rounded-none border-0"
                     >
                       <ShoppingBag size={16} />
                       <span>اطلب الآن</span>

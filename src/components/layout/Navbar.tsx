@@ -60,7 +60,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-bg-primary/90 backdrop-blur-xl border-b border-bg-tertiary/50 shadow-lg shadow-bg-primary/20"
+            ? "bg-bg-primary/80 backdrop-blur-xl border-b border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
             : "bg-transparent"
         }`}
       >
@@ -91,7 +91,7 @@ export default function Navbar() {
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-xl ${
                     activeSection === link.href
                       ? "text-accent"
                       : "text-text-secondary hover:text-text-primary"
@@ -100,7 +100,7 @@ export default function Navbar() {
                   {activeSection === link.href && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 bg-accent/10 border border-accent/20 rounded-lg"
+                      className="absolute inset-0 bg-brand/10 border border-brand/20 shadow-[0_0_15px_rgba(139,36,56,0.15)] rounded-xl"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -115,7 +115,7 @@ export default function Navbar() {
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link
                   href="/menu"
-                  className="hidden md:flex btn-gold btn-shimmer text-sm gap-2 rounded-lg"
+                  className="hidden md:flex btn-gold btn-shimmer text-sm gap-2 rounded-xl border border-brand-light/20 hover:border-brand-light/50 shadow-lg shadow-brand/20"
                 >
                   <ShoppingBag size={16} className="relative z-10" />
                   <span className="relative z-10">اعرض المنيو</span>
@@ -165,7 +165,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 300 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-y-0 right-0 z-40 w-72 bg-bg-secondary/95 backdrop-blur-xl border-l border-bg-tertiary flex flex-col pt-20 pb-8 px-6"
+            className="fixed inset-y-0 right-0 z-40 w-72 bg-bg-secondary/90 backdrop-blur-xl border-l border-white/5 flex flex-col pt-20 pb-8 px-6 shadow-2xl"
           >
             {/* Mobile brand */}
             <div className="flex items-center gap-2 mb-8 px-4">
@@ -186,9 +186,9 @@ export default function Navbar() {
                     damping: 25
                   }}
                   onClick={() => handleNavClick(link.href)}
-                  className={`text-right py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                  className={`text-right py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
                     activeSection === link.href
-                      ? "text-accent bg-accent/10 border border-accent/20"
+                      ? "text-accent bg-brand/10 border border-brand/20 shadow-[0_0_10px_rgba(139,36,56,0.1)]"
                       : "text-text-secondary hover:text-accent hover:bg-bg-tertiary border border-transparent"
                   }`}
                 >
@@ -205,7 +205,7 @@ export default function Navbar() {
               <Link
                 href="/menu"
                 onClick={() => setMobileOpen(false)}
-                className="btn-gold btn-shimmer w-full justify-center mt-4 rounded-lg"
+                className="btn-gold btn-shimmer w-full justify-center mt-4 rounded-xl border border-brand-light/20 shadow-lg shadow-brand/20"
               >
                 <ShoppingBag size={16} className="relative z-10" />
                 <span className="relative z-10">اعرض المنيو</span>
